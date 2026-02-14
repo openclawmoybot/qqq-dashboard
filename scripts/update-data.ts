@@ -29,8 +29,24 @@ async function main() {
     console.log(`News items: ${output.news.length}`);
 
   } catch (error) {
-    console.error('Error:', error);
-    process.exit(1);
+    console.error('Error fetching data (likely network block or API change):', error);
+    // Do NOT fail the build. Keep the old data.json (which is checked into git).
+    // If the file doesn't exist (clean repo and first run failed), write mock data.
+    if (!fs.existsSync(DATA_FILE)) {
+        console.log('No existing data found. Writing fallback mock data.');
+        const mockData: DashboardData = {
+            symbol: SYMBOL,
+            updatedAt: new Date().toISOString(),
+            currentPrice: 0,
+            currentSMA: 0,
+            history: [],
+            news: [{ title: 'Data Fetch Failed - Using Mock', link: '#', pubDate: new Date().toISOString(), source: 'System' }]
+        };
+        fs.writeFileSync(DATA_FILE, JSON.stringify(mockData, null, 2));
+    } else {
+        console.log('Using existing (stale) data from repository.');
+    }
+    process.exit(0); // Exit success so deployment continues
   }
 }
 

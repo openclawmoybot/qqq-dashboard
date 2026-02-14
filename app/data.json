@@ -1,6 +1,6 @@
 {
   "symbol": "QQQ",
-  "updatedAt": "2026-02-14T20:12:34.912Z",
+  "updatedAt": "2026-02-14T20:25:41.273Z",
   "currentPrice": 601.92,
   "currentSMA": 600.29,
   "history": [
@@ -1255,5 +1255,36 @@
       "sma": 600.29
     }
   ],
-  "news": []
+  "news": [
+    {
+      "title": "Exchange-Traded Funds Rise as US Equities Advance After Midday",
+      "link": "https://finance.yahoo.com/news/exchange-traded-funds-rise-us-180948175.html?.tsrc=rss",
+      "pubDate": "Fri, 13 Feb 2026 18:09:48 +0000",
+      "source": "Yahoo Finance"
+    },
+    {
+      "title": "Asia Stocks Jump 12% in 2026 as Nasdaq Sheds $1.5 Trillion",
+      "link": "https://finance.yahoo.com/news/asia-stocks-jump-12-2026-170029494.html?.tsrc=rss",
+      "pubDate": "Fri, 13 Feb 2026 17:00:29 +0000",
+      "source": "Yahoo Finance"
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Friday Amid January Consumer Price Inflation Report",
+      "link": "https://finance.yahoo.com/news/exchange-traded-funds-equity-futures-135927712.html?.tsrc=rss",
+      "pubDate": "Fri, 13 Feb 2026 13:59:27 +0000",
+      "source": "Yahoo Finance"
+    },
+    {
+      "title": "Invesco QQQ or iShares Russell 2000 Growth ETF: Which is the Better Buy?",
+      "link": "https://www.fool.com/coverage/etfs/2026/02/12/invesco-qqq-or-ishares-russell-2000-growth-etf-which-is-the-better-buy/?.tsrc=rss",
+      "pubDate": "Thu, 12 Feb 2026 22:09:21 +0000",
+      "source": "Yahoo Finance"
+    },
+    {
+      "title": "Exchange-Traded Funds Decline as US Equities Fall After Midday",
+      "link": "https://finance.yahoo.com/news/exchange-traded-funds-decline-us-181017267.html?.tsrc=rss",
+      "pubDate": "Thu, 12 Feb 2026 18:10:17 +0000",
+      "source": "Yahoo Finance"
+    }
+  ]
 }
