@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import StockChart from './components/StockChart';
-import { ArrowUp, ArrowDown, RefreshCw } from 'lucide-react';
+import { ArrowUp, ArrowDown, RefreshCw, ExternalLink } from 'lucide-react';
 
 async function getData() {
   const filePath = path.join(process.cwd(), 'app/data.json');
@@ -11,7 +11,7 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
-  const { currentPrice, currentSMA, updatedAt, history } = data;
+  const { currentPrice, currentSMA, updatedAt, history, news } = data;
   
   const isBullish = currentPrice > currentSMA;
   const trendColor = isBullish ? 'text-green-500' : 'text-red-500';
@@ -56,14 +56,29 @@ export default async function Home() {
           <StockChart data={history} />
         </section>
 
-        {/* News Section (Placeholder) */}
+        {/* News Section */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
             <h2 className="text-xl font-semibold text-white mb-4">Market Events</h2>
-            <div className="text-gray-400 text-sm">
-              <p>No major market events fetched today.</p>
-              {/* Future: Map over data.news */}
-            </div>
+            {news && news.length > 0 ? (
+              <div className="space-y-4">
+                {news.map((item: any, i: number) => (
+                  <div key={i} className="group">
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-start justify-between gap-2 hover:bg-gray-800 p-2 rounded transition">
+                      <div>
+                        <h3 className="text-gray-200 font-medium group-hover:text-blue-400 transition">{item.title}</h3>
+                        <p className="text-gray-500 text-xs mt-1">{new Date(item.pubDate).toLocaleDateString()} • {item.source}</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-600 group-hover:text-blue-400 opacity-0 group-hover:opacity-100 transition" />
+                    </a>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-gray-400 text-sm">
+                <p>No recent market news fetched.</p>
+              </div>
+            )}
           </div>
           
           <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
